@@ -31,14 +31,17 @@
         <img src="./images/logo.svg" alt="logo" class="w-18 m-8" />
 
         <div
-          class="bg-white lg:flex lg:gap-7 md:rounded-2xl rounded-t-2xl lg:w-[800px] w-full max-w-xl w-120 lg:p-4 p-6 min-h-screen md:min-h-0"
+          class="bg-white lg:flex lg:gap-7 md:rounded-2xl rounded-t-2xl lg:w-[920px] w-full max-w-xl w-120 lg:p-4 p-6 min-h-screen md:min-h-0"
         >
           <div class="lg:w-[50%]">
             <!-- Bill -->
             <div class="flex justify-between">
-              <p class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mb-1">
+              <label
+                for="bill-input"
+                class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mb-1"
+              >
                 Bill
-              </p>
+              </label>
               <span
                 id="error-msg"
                 class="hidden text-[#E17052] text-xs lg:text-[10px] font-bold mb-1"
@@ -107,11 +110,12 @@
             <!-- Number of People -->
             <div class="relative">
               <div class="flex justify-between">
-                <p
+                <label
+                  for="people"
                   class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mt-6 mb-2"
                 >
                   Number of People
-                </p>
+                </label>
                 <span
                   id="error-msgg"
                   class="hidden text-[#E17052] text-xs lg:text-[10px] font-bold mt-6 mb-2"
