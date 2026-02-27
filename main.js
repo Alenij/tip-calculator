@@ -92,6 +92,7 @@ reset.addEventListener("click", () => {
   errorMsg.classList.add("hidden");
   peopleInput.classList.remove("error-state");
   billInput.classList.remove("error-state");
+  customTip.value = "";
   tipButtons.forEach((button) => {
     button.classList.remove("active-state");
   });
