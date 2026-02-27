@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="index.css" />
+    <title>Tip calculator app</title>
+  </head>
+  <body>
+    <main>
+      <div
+        class="bg-[#C5E4E7] flex flex-col justify-center items-center min-h-screen"
+      >
+        <img src="./images/logo.svg" alt="logo" class="w-18 m-8" />
+
+        <div
+          class="bg-white lg:flex lg:gap-7 md:rounded-2xl rounded-t-2xl lg:w-[600px] w-full max-w-lg w-96 lg:p-4 p-6 min-h-screen md:min-h-0"
+        >
+          <div class="lg:w-[50%]">
+            <!-- Bill -->
+            <div class="flex justify-between">
+              <p class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mb-1">
+                Bill
+              </p>
+              <span
+                id="error-msg"
+                class="hidden text-[#E17052] text-xs lg:text-[10px] font-bold mb-1"
+              >
+                Can't be zero
+              </span>
+            </div>
+            <div class="relative mb-6">
+              <input
+                type="text"
+                onkeypress="return /[0-9.]/.test(event.key);"
+                placeholder="0"
+                id="bill-input"
+                class="bg-[#F3F9FA] outline-none focus:border-2 focus:border-[#26C2AE] w-full p-1 text-right text-[#00474B] font-bold rounded-md"
+              />
+              <img
+                src="./images/icon-dollar.svg"
+                alt="dollar"
+                class="absolute top-3 left-3 w-2 h-3"
+              />
+            </div>
+            <!-- Tip Buttons -->
+            <p class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mb-2">
+              Select Tip %
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <button
+                data-tip="0.05"
+                class="bg-[#00474B] hover:bg-[#9FE8DF] hover:text-black text-white rounded-sm py-2 font-bold"
+              >
+                5%
+              </button>
+              <button
+                data-tip="0.10"
+                class="bg-[#00474B] tip-btn text-white rounded-sm py-2 font-bold"
+              >
+                10%
+              </button>
+              <button
+                data-tip="0.15"
+                class="bg-[#00474B] tip-btn text-white rounded-sm py-2 font-bold"
+              >
+                15%
+              </button>
+              <button
+                data-tip="0.25"
+                class="bg-[#00474B] tip-btn text-white rounded-sm py-2 font-bold"
+              >
+                25%
+              </button>
+              <button
+                data-tip="0.50"
+                class="bg-[#00474B] tip-btn text-white rounded-sm py-2 font-bold"
+              >
+                50%
+              </button>
+              <input
+                type="text"
+                onkeypress="return /[0-9.]/.test(event.key);"
+                placeholder="Custom"
+                id="custom-tip"
+                class="bg-[#F3F9FA] placeholder:text-[#9EBBBD] outline-none focus:border-2 focus:border-[#26C2AE] text-right rounded-sm py-2 font-bold text-[#00474B]"
+              />
+            </div>
+
+            <!-- Number of People -->
+            <div class="relative">
+              <div class="flex justify-between">
+                <p
+                  class="text-[#5E7A7D] text-xs lg:text-[10px] font-bold mt-6 mb-2"
+                >
+                  Number of People
+                </p>
+                <span
+                  id="error-msgg"
+                  class="hidden text-[#E17052] text-xs lg:text-[10px] font-bold mt-6 mb-2"
+                >
+                  Can't be zero
+                </span>
+              </div>
+              <input
+                type="text"
+                onkeypress="return /[0-9.]/.test(event.key);"
+                placeholder="0"
+                id="people"
+                class="bg-[#F3F9FA] w-full p-1 outline-none focus:border-2 focus:border-[#26C2AE] text-right text-[#00474B] font-bold rounded-md"
+              />
+              <img
+                src="./images/icon-person.svg"
+                alt="person-icon"
+                class="absolute bottom-3 left-3 w-2.5 h-3"
+              />
+            </div>
+          </div>
+
+          <!-- Bill Total -->
+          <div
+            class="bg-[#00474B] mt-7 lg:mt-0 pt-7 pb-5 px-5 rounded-lg lg:w-[50%] lg:self-start lg:flex lg:flex-col lg:gap-25"
+          >
+            <div>
+              <!-- Tip amount -->
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <p class="text-[10px] text-white font-semibold">Tip Amount</p>
+                  <p class="text-[9px] text-[#9EBBBD] font-bold">/ person</p>
+                </div>
+                <p id="tip-amount" class="text-[#26C2AE] text-2xl">$0.00</p>
+              </div>
+              <!-- Total -->
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-[10px] text-white font-semibold">Total</p>
+                  <p class="text-[9px] text-[#9EBBBD] font-bold">/ person</p>
+                </div>
+                <p id="total-amount" class="text-[#26C2AE] text-2xl">$0.00</p>
+              </div>
+            </div>
+
+            <button
+              id="resetBtn"
+              class="bg-[#26C2AE] text-[#00474B] hover:bg-[#9FE8DF] text-sm font-bold p-2 rounded-md w-full lg:mt-auto mt-5"
+            >
+              RESET
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script defer src="main.js"></script>
+  </body>
+</html>

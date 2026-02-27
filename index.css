@@ -1,0 +1,28 @@
+body {
+  font-family: "Space Mono", monospace;
+}
+
+input {
+  caret-color: #26c2ae;
+}
+input:hover {
+  border: 2px #26c2ae solid;
+  cursor: pointer;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.tip-btn:hover {
+  background-color: #9fe8df;
+  color: black;
+}
+
+.active-state {
+  background-color: #9fe8df;
+  color: black;
+}
+
+.error-state {
+  border: 2px #e17052 solid;
+}
